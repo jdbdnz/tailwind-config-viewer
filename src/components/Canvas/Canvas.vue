@@ -121,6 +121,13 @@ export default {
     this.config = await config.json()
     this.config = defu(this.config, defaultOptions)
     this.configTransformed = themeComponentMapper(this.config.theme)
+
+    if (this.config.stylesheet) {
+      let file = document.createElement('link');
+      file.rel = 'stylesheet';
+      file.href = this.config.stylesheet
+      document.head.appendChild(file)
+    }
   }
 }
 </script>
